@@ -29,9 +29,7 @@
                 "October", "November", "December"
             ];
             var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
-            var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30",
-                "31"
-            ]
+            var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
 
 
             var nextDate = new Date(nextMonth + ' 1 ,' + year);
@@ -67,8 +65,8 @@
             }
 
 
-            var calendarBody = "<table> <tr><th colspan='7'>" +  monthNames[month] + "</th></tr>";
-            calendarBody += "<tr>  <td>Sun</td>  <td>Mon</td> <td>Tues</td> <td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+            var calendarBody = "<table> <tr><th bgcolor= red colspan='7'>" +  monthNames[month] + "</th></tr>";
+            calendarBody += "<tr bgcolor= #FF0000>  <td>Sun</td>  <td>Mon</td> <td>Tues</td> <td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
             calendarBody += htmlContent;
             document.getElementById("calendar").innerHTML = calendarBody;
 
