@@ -1,85 +1,75 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <script>
-        function displayCalendar() {
+      function displayCalendar() {
 
-            var htmlContent = "";
-            var FebNumberOfDays = "";
-            var counter = 1;
-            var dateNow = new Date();
-            var month = dateNow.getMonth();
-            var nextMonth = month + 1;
-            var prevMonth = month - 1;
-            var day = dateNow.getDate();
-            var year = dateNow.getFullYear();
-
-
-            if (month == 1) {
-                if ((year % 100 != 0) && (year % 4 == 0) || (year % 400 == 0)) {
-                    FebNumberOfDays = 29;
-                } else {
-                    FebNumberOfDays = 28;
-                }
-            }
+          var htmlContent = "";
+          var FebNumberOfDays = "";
+          var counter = 1;
+          var dateNow = new Date();
+          var month = dateNow.getMonth();
+          var nextMonth = month + 1;
+          var prevMonth = month - 1;
+          var day = dateNow.getDate();
+          var year = dateNow.getFullYear();
 
 
-            var monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
-                "Ekim", "Kasım", "Aralık"
-            ];
-            var dayNames = ["Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday"];
-            var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
+          if (month == 1) {
+              if ((year % 100 != 0) && (year % 4 == 0) || (year % 400 == 0)) {
+                  FebNumberOfDays = 29;
+              } else {
+                  FebNumberOfDays = 28;
+              }
+          }
 
 
-            var nextDate = new Date(nextMonth + ' 1 ,' + year);
-            var weekdays = nextDate.getDay();
-            var weekdays2 = weekdays
-            var numOfDays = dayPerMonth[month];
+          var monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+              "Ekim", "Kasım", "Aralık"
+          ];
+          var dayNames = ["Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday"];
+          var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
 
+          var nextDate = new Date(nextMonth + ' 1 ,' + year);
+          var weekdays = nextDate.getDay();
+          var weekdays2 = weekdays
+          var numOfDays = dayPerMonth[month];
 
-            while ((weekdays + 6) % 7 > 0) {
+          while ((weekdays + 6) % 7 > 0) {
               htmlContent += "<td></td>";
               weekdays--;
           }
+  
+          while (counter <= numOfDays) {
+              if (counter == day) {
+                  htmlContent +=
+                      "<td bgcolor= #FF0000>" + counter + "</td>";
+              }
 
-            while (counter <= numOfDays) {
+              else {
+                  htmlContent += "<td>" + counter + "</td>";
 
-                if (weekdays2 > 6) {
-                    weekdays2 = 0;
-                    htmlContent += "</tr><tr>";
-                }
-
-                if (counter == day) {
-                    htmlContent +=
-                        "<td bgcolor= #FF0000>" + counter + "</td>";
-                } 
-                
-                else {
-                    htmlContent += "<td>" + counter + "</td>";
-
-                }
-                weekdays2++;
-                counter++;
-            }
+              }
+              if (weekdays2 % 7 === 0) {
+                  //weekdays2 = 0;
+                  htmlContent += "</tr><tr>";
+              }
+              weekdays2++;
+              counter++;
+          }
 
 
-            var calendarBody = "<table border= 10px solid black> <tr><th  bgcolor= red colspan='7'>" +  monthNames[month] + "</th></tr>";
-            calendarBody += "<tr bgcolor= #FF0000>  <td>Pazartesi</td> <td>Salı</td> <td>Çarşamba</td> <td>Perşembe</td> <td>Cuma</td> <td>Cumartesi</td> <td>Pazar</td> </tr>";
-            calendarBody += htmlContent;
-            document.getElementById("calendar").innerHTML = calendarBody;
+          var calendarBody = "<table style=width:100% border=10px solid black> <tr><th bgcolor= red colspan='7'>" +  monthNames[month] + "</th></tr>";
+          calendarBody += "<tr bgcolor= #FF0000>  <td>Pazartesi</td> <td>Salı</td> <td>Çarşamba</td> <td>Perşembe</td> <td>Cuma</td> <td>Cumartesi</td> <td>Pazar</td> </tr>";
+          calendarBody += htmlContent;
+          document.getElementById("calendar").innerHTML = calendarBody;
 
-        }
+      }
     </script>
-</head>
+  </head>
 
-<body onload="displayCalendar()">
-    
-    <div id="calendar"></div>
-
-</body>
-<style>
-
-</style>
-
+  <body onload="displayCalendar()">
+    <div id="calendar" style=" margin: auto;"></div>
+  </body>
+  <style></style>
 </html>
