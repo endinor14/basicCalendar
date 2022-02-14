@@ -25,10 +25,10 @@
             }
 
 
-            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-                "October", "November", "December"
+            var monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+                "Ekim", "Kasım", "Aralık"
             ];
-            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
+            var dayNames = ["Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday"];
             var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
 
 
@@ -38,11 +38,10 @@
             var numOfDays = dayPerMonth[month];
 
 
-            while (weekdays > 0) {
-                htmlContent += "<td></td>";
-
-                weekdays--;
-            }
+            while ((weekdays + 6) % 7 > 0) {
+              htmlContent += "<td></td>";
+              weekdays--;
+          }
 
             while (counter <= numOfDays) {
 
@@ -65,8 +64,8 @@
             }
 
 
-            var calendarBody = "<table> <tr><th bgcolor= red colspan='7'>" +  monthNames[month] + "</th></tr>";
-            calendarBody += "<tr bgcolor= #FF0000>  <td>Sun</td>  <td>Mon</td> <td>Tues</td> <td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+            var calendarBody = "<table border= 10px solid black> <tr><th  bgcolor= red colspan='7'>" +  monthNames[month] + "</th></tr>";
+            calendarBody += "<tr bgcolor= #FF0000>  <td>Pazartesi</td> <td>Salı</td> <td>Çarşamba</td> <td>Perşembe</td> <td>Cuma</td> <td>Cumartesi</td> <td>Pazar</td> </tr>";
             calendarBody += htmlContent;
             document.getElementById("calendar").innerHTML = calendarBody;
 
